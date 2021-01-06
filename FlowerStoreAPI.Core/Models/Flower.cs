@@ -13,8 +13,6 @@ namespace FlowerStoreAPI.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public int Id { get; set; }
 
-        public int ShopId {get; set; }
-
         [Required]
         public string Name { get; set; }
 

@@ -21,9 +21,5 @@ namespace FlowerStoreAPI.Models
 
         [Required]
         public string Region { get; set; }
-
-         public IEnumerable<Flower> Flowers { get; set; }
-
-         public int Sale {get; set;}
     }
 }

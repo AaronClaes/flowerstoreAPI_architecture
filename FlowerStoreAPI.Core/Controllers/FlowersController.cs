@@ -19,7 +19,6 @@ namespace FlowerStoreAPI.Controllers
         private readonly IFlowerRepo _repository;
         private readonly IMapper _mapper;
         private readonly IMemoryCache _memoryCache;
-        public int flowerSale = 0;
         
         public FlowersController(IFlowerRepo repository, IMapper mapper, IMemoryCache memoryCache)
         {
@@ -33,14 +32,13 @@ namespace FlowerStoreAPI.Controllers
         /// <summary>
         /// Gets you a list of all the flowers.
         /// </summary>
-        /// <param name="ShopId">The unique identifier of the shop</param>
         /// <returns>A list of flowers</returns>
-        [HttpGet("{ShopId}")]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult <IEnumerable<FlowerReadDto>>> GetAllFlowers(int ShopId)
+        public async Task<ActionResult <IEnumerable<FlowerReadDto>>> GetAllFlowers()
         {
-            var flowerItems = await _repository.GetAllFlowers(ShopId);
+            var flowerItems = await _repository.GetAllFlowers();
 
             return Ok( _mapper.Map<IEnumerable<FlowerReadDto>>(flowerItems).Select(x => x.Convert()).ToList());
         }
@@ -50,14 +48,13 @@ namespace FlowerStoreAPI.Controllers
         /// Gets you a specific flower.
         /// </summary>
         /// <param name="id">The unique identifier of the flower</param>
-        /// <param name="ShopId">The unique identifier of the shop</param>
         /// <returns></returns>
-        [HttpGet("{shopId}/{id}")]
+        [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult <FlowerReadDto>> GetFlowerById(int ShopId, int id)
+        public async Task<ActionResult <FlowerReadDto>> GetFlowerById(int id)
         {
-            var flowerItem = await _repository.GetFlowerById(ShopId, id);
+            var flowerItem = await _repository.GetFlowerById(id);
 
             if(flowerItem != null)
             {
@@ -70,18 +67,17 @@ namespace FlowerStoreAPI.Controllers
         /// <summary>
         /// Creates a new flower.
         /// </summary>
-        /// <param name="ShopId">The unique identifier of the shop</param>
         /// <param name="flowerCreateDto">The unique identifier of the shop</param>
         /// <returns></returns>
-        [HttpPost("{ShopId}")]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public ActionResult<FlowerReadDto> CreateFlower(int ShopId, FlowerCreateDto flowerCreateDto)
+        public ActionResult<FlowerReadDto> CreateFlower(FlowerCreateDto flowerCreateDto)
         {
 
             var flowerModel = _mapper.Map<Flower>(flowerCreateDto);
-            _repository.CreateFlower(ShopId, flowerModel);
+            _repository.CreateFlower(flowerModel);
             _repository.SaveChanges();
 
             var flowerReadDto = _mapper.Map<FlowerReadDto>(flowerModel);
@@ -95,16 +91,15 @@ namespace FlowerStoreAPI.Controllers
         /// Changes an existing flower.
         /// </summary>
         /// <param name="id">The unique identifier of the flower</param>
-        /// <param name="ShopId">The unique identifier of the shop</param>
         /// <param name="flowerUpdateDto">The unique identifier of the shop</param>
         /// <returns></returns>
-        [HttpPut("{shopId}/{id}")]
+        [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> UpdateFlower(int ShopId, int id, FlowerUpdateDto flowerUpdateDto)
+        public async Task<ActionResult> UpdateFlower(int id, FlowerUpdateDto flowerUpdateDto)
         {
-            var flowerModelFromRepo = await _repository.GetFlowerById(ShopId, id);
+            var flowerModelFromRepo = await _repository.GetFlowerById(id);
             if(flowerModelFromRepo == null)
             {
                 return NotFound();
@@ -112,7 +107,7 @@ namespace FlowerStoreAPI.Controllers
 
             _mapper.Map(flowerUpdateDto, flowerModelFromRepo);
 
-            _repository.UpdateFlower(ShopId, flowerModelFromRepo);
+            _repository.UpdateFlower(flowerModelFromRepo);
 
             _repository.SaveChanges();
 
@@ -125,20 +120,19 @@ namespace FlowerStoreAPI.Controllers
         /// Deletes an existing flower.
         /// </summary>
         /// <param name="id">The unique identifier of the flower</param>
-        /// <param name="ShopId">The unique identifier of the shop</param>
         /// <returns></returns>
-        [HttpDelete("{shopId}/{id}")]
+        [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> DeleteFlower(int ShopId, int id)
+        public async Task<ActionResult> DeleteFlower(int id)
         {
-            var flowerModelFromRepo = await _repository.GetFlowerById(ShopId, id);
+            var flowerModelFromRepo = await _repository.GetFlowerById(id);
             if(flowerModelFromRepo == null)
             {
                 return NotFound();
             }
-            _repository.DeleteFlower(ShopId, id);
+            _repository.DeleteFlower(id);
             _repository.SaveChanges();
 
             return NoContent();

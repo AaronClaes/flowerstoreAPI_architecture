@@ -24,9 +24,8 @@ namespace FlowerStoreAPI.Repositories
 
         
         //function called to create flowers
-        public async Task CreateFlower(int ShopId, Flower flower)
+        public async Task CreateFlower(Flower flower)
         {
-            await CheckStoreExists(ShopId);
             if(flower == null){
                 throw new System.NotImplementedException(nameof(flower));
             }
@@ -36,9 +35,9 @@ namespace FlowerStoreAPI.Repositories
 
 
         //function called to delete flowers
-        public async Task DeleteFlower(int ShopId, int id)
+        public async Task DeleteFlower(int id)
         {
-            var Flower = await GetFlowerById(ShopId, id);
+            var Flower = await GetFlowerById(id);
             if(Flower == null)
             {
                 throw new ArgumentNullException(nameof(Flower));
@@ -48,7 +47,7 @@ namespace FlowerStoreAPI.Repositories
 
 
         //function called to get all flowers from database
-        public async Task<IEnumerable<Flower>> GetAllFlowers(int ShopId)
+        public async Task<IEnumerable<Flower>> GetAllFlowers()
         {
             var storeWithFlowers = await _context.Stores
             .Include(x => x.Flowers)
@@ -62,9 +61,8 @@ namespace FlowerStoreAPI.Repositories
 
 
         //function called to get specific flower by id
-        public async Task<Flower> GetFlowerById(int ShopId, int id)
+        public async Task<Flower> GetFlowerById(int id)
         {
-            await CheckStoreExists(ShopId);
             var flower = await _context.Flowers.FirstOrDefaultAsync(x => x.Id == id && x.ShopId == ShopId);
             if(flower == null)
             {
@@ -80,7 +78,7 @@ namespace FlowerStoreAPI.Repositories
             return (_context.SaveChanges() >= 0);
         }
 
-        public void UpdateFlower(int ShopId, Flower flower)
+        public void UpdateFlower(Flower flower)
         {
             //nothing
         }
@@ -92,26 +90,6 @@ namespace FlowerStoreAPI.Repositories
             {
                 throw new NotFoundException();
             }
-        }
-
-        void IFlowerRepo.CreateFlower(int shopId, Flower flower)
-        {
-            CheckStoreExists(shopId);
-            if(flower == null){
-                throw new System.NotImplementedException(nameof(flower));
-            }
-            
-            _context.Flowers.Add(flower);
-        }
-
-        void IFlowerRepo.DeleteFlower(int ShopId, int id)
-        {
-            var Flower = GetFlowerById(ShopId, id);
-            if(Flower == null)
-            {
-                throw new ArgumentNullException(nameof(Flower));
-            }
-            _context.Flowers.Remove(Flower);
         }
     }
 }

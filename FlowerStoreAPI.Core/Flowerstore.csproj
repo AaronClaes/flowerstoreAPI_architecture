@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-   <DocumentationFile>.\FlowerstoreAPI.Core\Flowerstore.xml</DocumentationFile>
+   <DocumentationFile>E:\Users\projects\Architecture\correct\wetransfer-662252\Flowerstore\FlowerstoreAPI.Core\Flowerstore.xml</DocumentationFile>
  </PropertyGroup>
 
 	<PropertyGroup>

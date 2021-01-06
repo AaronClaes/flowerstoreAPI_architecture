@@ -14,10 +14,10 @@ namespace FlowerStoreAPI.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public int Id { get; set; }
         
-        [Required]
+        [BsonRequired]
         public IEnumerable<Flower> Flowers { get; set; }
 
-        [Required]
+        [BsonRequired]
         public IEnumerable<Store> Store{ get; set; }
     }
 }

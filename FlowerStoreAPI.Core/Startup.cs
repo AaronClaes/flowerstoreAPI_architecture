@@ -3,6 +3,7 @@ using System.IO;
 using System.Reflection;
 using AutoMapper;
 using FlowerStoreAPI.Data;
+using FlowerStoreAPI.Models;
 using FlowerStoreAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MongoDB.Driver;
 namespace FlowerStoreAPI
 {
     public class Startup
@@ -33,6 +35,7 @@ namespace FlowerStoreAPI
 
             services.AddScoped<IFlowerRepo, SqlFlowerRepo>();
             services.AddScoped<IStoreRepo, SqlStoreRepo>();
+            services.AddScoped<ISaleRepo, SqlSaleRepo>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -70,7 +73,16 @@ namespace FlowerStoreAPI
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Flowerstore API V1");
-            });
+            });}
+
+            public class MongoDbService
+            {
+                public MongoDbService(IMongoCollection<Flower> flowerCollection)
+                {
+                    FlowerCollection = flowerCollection;
+                }
+                private IMongoCollection<Flower> FlowerCollection{get; }
+            }
         }
     }
-}
+

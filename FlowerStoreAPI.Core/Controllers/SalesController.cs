@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -8,6 +9,7 @@ using FlowerStoreAPI.Repositories;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace FlowerStoreAPI.Controllers
 {
@@ -34,6 +36,14 @@ namespace FlowerStoreAPI.Controllers
             var saleItems = _repository.GetAllSales();
             
             return Ok(_mapper.Map<IEnumerable<SaleReadDto>>(saleItems));
+        }
+
+        public async Task<JsonResult> Get()
+        {
+            var mongoDbService = new MongoDbService("saleDb", "Sales", "mongodb:95.82.54.163");
+            var allSales = await mongoDbService.GetAllSales();
+
+            return new JsonResult(allSales); // -hier moet eigenlijk "return Json(allSales);" maar gaf error en zo leek het gefikst
         }
 
         //GET api/sales/{id}
@@ -66,6 +76,14 @@ namespace FlowerStoreAPI.Controllers
 
             return CreatedAtRoute(nameof(GetSaleById), new{Id = saleReadDto. Id}, saleReadDto);
         }
+
+        public async Task Post([FromBody]Sale sale)
+        {
+            var mongoDbService = new MongoDbService("saleDb", "Sales", "mongodb://95.82.54.163");
+            
+            await mongoDbService.InsertSale(sale);
+        }
+
 
         //PUT api/sales
         [HttpPut("{id}")]

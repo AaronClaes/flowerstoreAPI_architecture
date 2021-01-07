@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using MongoDB.Driver;
+
 namespace FlowerStoreAPI
 {
     public class Startup
@@ -74,15 +74,6 @@ namespace FlowerStoreAPI
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Flowerstore API V1");
             });}
-
-            public class MongoDbService
-            {
-                public MongoDbService(IMongoCollection<Flower> flowerCollection)
-                {
-                    FlowerCollection = flowerCollection;
-                }
-                private IMongoCollection<Flower> FlowerCollection{get; }
-            }
         }
     }
 

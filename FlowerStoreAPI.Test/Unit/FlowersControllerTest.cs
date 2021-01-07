@@ -35,22 +35,22 @@ namespace FlowerStoreAPI.Test.Unit
                 new Flower
                 {
                     Id = 1,
-                    Name = "test flower 1"
-                    Color= "test color flower 1"
+                    Name = "test flower 1",
+                    Color= "test color flower 1",
                     Price = 3
                 },
                 new Flower
                 {
                     Id = 2,
-                    Name = "test flower 2"
-                    Color= "test color flower 2"
+                    Name = "test flower 2",
+                    Color= "test color flower 2",
                     Price = 4
                 },
                 new Flower
                 {
                     Id = 3,
-                    Name = "test flower 3"
-                    Color = "test color flower 3"
+                    Name = "test flower 3",
+                    Color = "test color flower 3",
                     Price = 5
                 },
             };
@@ -75,8 +75,8 @@ namespace FlowerStoreAPI.Test.Unit
             var flower = new Flower()
             {
                 Id = 1,
-                Name = "test flower"
-                Color = "test color flower"
+                Name = "test flower",
+                Color = "test color flower",
                 Price = 5
             }
             _SqlFlowerRepoMock.Setup(x => x.GetFlowerById(1)).Returns(flower).Verifiable();
@@ -102,15 +102,15 @@ namespace FlowerStoreAPI.Test.Unit
             var flower = new Flower()
             {
                 Id = 1,
-                Name = "test flower"
-                Color = "test flower color"
+                Name = "test flower",
+                Color = "test flower color",
                 Price = 4
             };            
             _SqlFlowerRepoMock.Setup(x => x.Insert("test flower", "test flower color", 4)).Returns(flower).Verifiable();
             var flowerResponse = _flowersController.CreateFlower(new FlowerCreateDto()
             {
-                Name = "test flower"
-                Color = "test flower color"
+                Name = "test flower",
+                Color = "test flower color",
                 Price = 4
             });
             flowerResponse.Should().BeOfType<CreatedResult>();

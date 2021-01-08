@@ -1,14 +1,14 @@
 using System.Threading.Tasks;
-using BasicRestAPI.Model.Domain;
-using BasicRestAPI.Model.Web;
-using BasicRestAPI.Tests.Integration.Utils;
+using FlowerStoreAPI.Dtos;
+using FlowerStoreAPI.Models;
+using FlowerStoreAPI.Test.Integration.Utils;
 using FluentAssertions;
 using Newtonsoft.Json;
 using Snapshooter;
 using Snapshooter.Xunit;
 using Xunit;
 
-namespace BasicRestAPI.Tests.Integration
+namespace FlowerStoreAPI.Tests.Integration.FlowerTests
 {
     // In this test we test all the methods of the garages controller.
     // This is both pretty artificial (as the API doesn't know things as "controllers", only endpoints)
@@ -57,7 +57,7 @@ namespace BasicRestAPI.Tests.Integration
         {
             var client = _factory.CreateClient();
             _factory.ResetAndSeedDatabase((db) => { });
-            var response = await client.GetAsync("/garages/1");
+            var response = await client.GetAsync("/flower/1");
             response.StatusCode.Should().Be(404);
         }
 
@@ -142,7 +142,7 @@ namespace BasicRestAPI.Tests.Integration
         }
 
         [Fact]
-        public async Task InsertGarageThrowsErrorOnGiganticName()
+        public async Task InsertFlowerThrowsErrorOnGiganticName()
         {
             var client = _factory.CreateClient();
             _factory.ResetAndSeedDatabase((db) => { });
@@ -192,7 +192,7 @@ namespace BasicRestAPI.Tests.Integration
             };
             var patchResponse = await client.PatchAsync("/flower/1", ContentHelper.GetStringContent(request.Body));
             patchResponse.EnsureSuccessStatusCode();
-            var body = JsonConvert.DeserializeObject<GarageWebOutput>(await patchResponse.Content.ReadAsStringAsync());
+            var body = JsonConvert.DeserializeObject<FlowerWebOutput>(await patchResponse.Content.ReadAsStringAsync());
             body.Should().NotBeNull();
             body.Name.Should().Be("hey");
             var getResponse = await client.GetAsync($"/flower/{body.Id}");

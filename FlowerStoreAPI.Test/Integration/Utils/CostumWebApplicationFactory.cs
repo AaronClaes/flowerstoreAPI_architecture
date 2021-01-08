@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace BasicRestAPI.Tests.Integration.Utils
+namespace FlowerStoreAPI.Test.Integration.Utils.CustomWebApplicationFactory
 {
     // Used for integration testing, based on https://docs.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-3.1
     public class CustomWebApplicationFactory<TStartup>

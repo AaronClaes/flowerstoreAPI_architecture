@@ -25,9 +25,21 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
     <PackageReference Include="MongoDB.Driver" Version="2.11.5" />
     <PackageReference Include="MySql.Data" Version="8.0.22" />
+    <PackageReference Include="NSwag.ApiDescription.Client" Version="13.9.4">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Polly" Version="7.2.1" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.6.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <OpenApiReference Include="docs.json" CodeGenerator="NSwagCSharp" Namespace="BasisRegisters.Vlaanderen">
+      <ClassName>BasisRegisterService</ClassName>
+      <OutputPath>BasisRegister.cs</OutputPath>
+      <Options>/UseBaseUrl:false /GenerateClientInterfaces:true</Options>
+    </OpenApiReference>
   </ItemGroup>
 
 

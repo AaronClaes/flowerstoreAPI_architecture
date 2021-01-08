@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using BasicRestAPI.Controllers;
-using BasicRestAPI.Model;
-using BasicRestAPI.Model.Domain;
-using BasicRestAPI.Model.Web;
-using BasicRestAPI.Repositories;
+using FlowerStoreAPI.Controllers;
+using FlowerStoreAPI.Models;
+using FlowerStoreAPI.Dtos;
+using FlowerStoreAPI.Repositories;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,7 +11,7 @@ using Moq;
 using Snapshooter.Xunit;
 using Xunit;
 
-namespace FlowerStoreAPI.Test.Unit
+namespace FlowerStoreAPI.Test.Unit.FlowerControllerTest
 {
 
     public class FlowersControllertest : IDisposable

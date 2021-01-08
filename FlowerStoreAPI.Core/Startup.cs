@@ -27,7 +27,7 @@ namespace FlowerStoreAPI
         public void ConfigureServices(IServiceCollection services)
         {   
             //configure connection with MySql database
-            services.AddDbContext<FlowerContext>(opt => opt.UseMySql(Configuration.GetConnectionString("FlowerConnection")));
+            services.AddDbContext<FlowerContext>(opt => opt.UseMySql(Configuration.GetConnectionString("SaleCollectionName")));
 
             services.AddControllers();
 

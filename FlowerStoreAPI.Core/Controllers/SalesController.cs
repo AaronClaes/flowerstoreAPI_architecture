@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace FlowerStoreAPI.Controllers
 {
     [Route("api/sales")]
@@ -68,13 +67,14 @@ namespace FlowerStoreAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
         public ActionResult<SaleReadDto> CreateSale(SaleCreateDto saleCreateDto){
+
             var saleModel = _mapper.Map<Sale>(saleCreateDto);
             _repository.CreateSale(saleModel);
             _repository.SaveChanges();
 
-            var saleReadDto = _mapper.Map<SaleCreateDto>(saleModel);
+            var saleReadDto = _mapper.Map<SaleReadDto>(saleModel);
 
-            return CreatedAtRoute(nameof(GetSaleById), new{Id = saleReadDto. Id}, saleReadDto);
+            return CreatedAtRoute(nameof(GetSaleById), new {Id = saleReadDto.Id }, saleReadDto);
         }
 
         public async Task Post([FromBody]Sale sale)

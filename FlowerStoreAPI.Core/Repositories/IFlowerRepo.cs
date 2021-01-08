@@ -12,6 +12,6 @@ namespace FlowerStoreAPI.Repositories
         Task<Flower> GetFlowerById(int id);
         void CreateFlower(Flower flower);
         void UpdateFlower(Flower flower);
-        void DeleteFlower(int id);
+        void DeleteFlower(Flower flower);
     }
 }

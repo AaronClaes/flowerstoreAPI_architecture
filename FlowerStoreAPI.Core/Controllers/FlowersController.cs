@@ -40,7 +40,7 @@ namespace FlowerStoreAPI.Controllers
         {
             var flowerItems = await _repository.GetAllFlowers();
 
-            return Ok( _mapper.Map<IEnumerable<FlowerReadDto>>(flowerItems).Select(x => x.Convert()).ToList());
+            return Ok( _mapper.Map<IEnumerable<FlowerReadDto>>(flowerItems));
         }
 
         //GET api/flowers/{shopId}/{id}
@@ -63,7 +63,7 @@ namespace FlowerStoreAPI.Controllers
             return NotFound();
         }
 
-        //POST api/flowers/{shopId}
+        //POST api/flowers
         /// <summary>
         /// Creates a new flower.
         /// </summary>
@@ -86,7 +86,7 @@ namespace FlowerStoreAPI.Controllers
         }
 
 
-        // PUT api/flowers/{ShopId}/{id}
+        // PUT api/flowers/{id}
         /// <summary>
         /// Changes an existing flower.
         /// </summary>
@@ -115,7 +115,7 @@ namespace FlowerStoreAPI.Controllers
         }
 
 
-        //DELETE api/flowers/{shopId}/{id}
+        //DELETE api/flowers/{id}
         /// <summary>
         /// Deletes an existing flower.
         /// </summary>
@@ -132,7 +132,7 @@ namespace FlowerStoreAPI.Controllers
             {
                 return NotFound();
             }
-            _repository.DeleteFlower(id);
+            _repository.DeleteFlower(flowerModelFromRepo);
             _repository.SaveChanges();
 
             return NoContent();

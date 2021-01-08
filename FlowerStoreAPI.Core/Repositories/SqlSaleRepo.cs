@@ -12,13 +12,14 @@ namespace FlowerStoreAPI.Repositories
     {
 
         private readonly FlowerContext _context;
-        private SqlSaleRepo(FlowerContext context){
+        public SqlSaleRepo(FlowerContext context)
+        {
             _context = context;
         }
 
         public void CreateSale(Sale sale)
         {
-            if(sale == null)
+            if (sale == null)
             {
                 throw new ArgumentNullException(nameof(sale));
             }
@@ -28,7 +29,7 @@ namespace FlowerStoreAPI.Repositories
 
         public void DeleteSale(Sale sale)
         {
-            if(sale == null)
+            if (sale == null)
             {
                 throw new ArgumentNullException(nameof(sale));
             }
@@ -38,7 +39,7 @@ namespace FlowerStoreAPI.Repositories
 
         public async Task<IEnumerable<Sale>> GetAllSales()
         {
-             return await _context.Sales.ToListAsync();
+            return await _context.Sales.ToListAsync();
         }
 
         public async Task<Sale> GetSaleById(int id)
@@ -53,7 +54,7 @@ namespace FlowerStoreAPI.Repositories
 
         public void UpdateSale(Sale sale)
         {
-            
+
         }
     }
 }

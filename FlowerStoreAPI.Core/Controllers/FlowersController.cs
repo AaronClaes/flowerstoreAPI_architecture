@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace FlowerStoreAPI.Controllers
-{   
+{
     [Route("api/flowers")]
     [ApiController]
     public class FlowersController : ControllerBase
@@ -19,7 +19,7 @@ namespace FlowerStoreAPI.Controllers
         private readonly IFlowerRepo _repository;
         private readonly IMapper _mapper;
         private readonly IMemoryCache _memoryCache;
-        
+
         public FlowersController(IFlowerRepo repository, IMapper mapper, IMemoryCache memoryCache)
         {
             _repository = repository;
@@ -28,7 +28,7 @@ namespace FlowerStoreAPI.Controllers
         }
 
 
-        // GET api/flowers/{shopId}
+        // GET api/flowers/
         /// <summary>
         /// Gets you a list of all the flowers.
         /// </summary>
@@ -36,14 +36,14 @@ namespace FlowerStoreAPI.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult <IEnumerable<FlowerReadDto>>> GetAllFlowers()
+        public async Task<ActionResult<IEnumerable<FlowerReadDto>>> GetAllFlowers()
         {
             var flowerItems = await _repository.GetAllFlowers();
 
-            return Ok( _mapper.Map<IEnumerable<FlowerReadDto>>(flowerItems));
+            return Ok(_mapper.Map<IEnumerable<FlowerReadDto>>(flowerItems));
         }
 
-        //GET api/flowers/{shopId}/{id}
+        //GET api/flowers/{id}
         /// <summary>
         /// Gets you a specific flower.
         /// </summary>
@@ -52,13 +52,13 @@ namespace FlowerStoreAPI.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult <FlowerReadDto>> GetFlowerById(int id)
+        public async Task<ActionResult<FlowerReadDto>> GetFlowerById(int id)
         {
             var flowerItem = await _repository.GetFlowerById(id);
 
-            if(flowerItem != null)
+            if (flowerItem != null)
             {
-                return Ok( _mapper.Map<FlowerReadDto>(flowerItem));
+                return Ok(_mapper.Map<FlowerReadDto>(flowerItem));
             }
             return NotFound();
         }
@@ -100,7 +100,7 @@ namespace FlowerStoreAPI.Controllers
         public async Task<ActionResult> UpdateFlower(int id, FlowerUpdateDto flowerUpdateDto)
         {
             var flowerModelFromRepo = await _repository.GetFlowerById(id);
-            if(flowerModelFromRepo == null)
+            if (flowerModelFromRepo == null)
             {
                 return NotFound();
             }
@@ -128,7 +128,7 @@ namespace FlowerStoreAPI.Controllers
         public async Task<ActionResult> DeleteFlower(int id)
         {
             var flowerModelFromRepo = await _repository.GetFlowerById(id);
-            if(flowerModelFromRepo == null)
+            if (flowerModelFromRepo == null)
             {
                 return NotFound();
             }

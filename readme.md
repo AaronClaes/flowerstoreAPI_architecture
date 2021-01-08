@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is the first version of our flowershop API.
+This is the final version of our flowershop API.
 
 ## Usage
 
@@ -14,11 +14,14 @@ Read through the code; it has been extensively commented.
 
 ## Explanation
 
-At the moment we coded basic endpoints such as GET, POST, PUT and DELETE,
-in both "stores" and "flowers". We also used mapping, Dto's.
+In this version you have the basic endpoints (GET, PUT, POST, DELETE) of the Flowers, the Stores and the Sales. 
+You have the option to register a sale that contains a Flower and a Store. 
 
-## TODO
+This project is not entirely working. You can run it but it does not fully cooperate. 
 
-- custom endpoints as given in the instructions (overview on stores that have the highest revenue for example).
-- Testing part
-- Making Async for POST work
+
+## MISSING/NOT WORKING
+
+- Connection with the BasicadressAPI.Vlaanderen => our .NET Framework is too outdated to implement the tools needed for implementation of an API.
+- MongoDB connection does not fully function.
+- Testing (unit and integration) does not fully function.

@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Flowerstore</name>
+    </assembly>
+    <members>
+        <member name="M:FlowerStoreAPI.Controllers.FlowersController.GetAllFlowers">
+            <summary>
+            Gets you a list of all the flowers.
+            </summary>
+            <returns>A list of flowers</returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.FlowersController.GetFlowerById(System.Int32)">
+            <summary>
+            Gets you a specific flower.
+            </summary>
+            <param name="id">The unique identifier of the flower</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.FlowersController.CreateFlower(FlowerStoreAPI.Dtos.FlowerDTOS.FlowerCreateDto)">
+            <summary>
+            Creates a new flower.
+            </summary>
+            <param name="flowerCreateDto">The unique identifier of the shop</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.FlowersController.UpdateFlower(System.Int32,FlowerStoreAPI.Dtos.FlowerDTOS.FlowerUpdateDto)">
+            <summary>
+            Changes an existing flower.
+            </summary>
+            <param name="id">The unique identifier of the flower</param>
+            <param name="flowerUpdateDto">The unique identifier of the shop</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.FlowersController.DeleteFlower(System.Int32)">
+            <summary>
+            Deletes an existing flower.
+            </summary>
+            <param name="id">The unique identifier of the flower</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.SalesController.GetAllSales">
+            <summary>
+            Gets you a list of all the sales.
+            </summary>
+            <returns>A list of sales</returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.SalesController.GetSaleById(System.Int32)">
+            <summary>
+            Gets you a sale by the id you give
+            </summary>
+            <returns>A single sale</returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.SalesController.CreateSale(FlowerStoreAPI.Dtos.SaleDTOS.SaleCreateDto)">
+            <summary>
+            Creates a sale
+            </summary>
+            <returns>The sale you created</returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.SalesController.UpdateSale(System.Int32,FlowerStoreAPI.Dtos.SaleDTOS.SaleUpdateDto)">
+            <summary>
+            Updates a sale
+            </summary>
+            <returns>The sale you updated</returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.SalesController.DeleteSale(System.Int32)">
+            <summary>
+            Deletes an existing sale.
+            </summary>
+            <param >The unique identifier of the sale</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.StoreController.GetAllStores">
+            <summary>
+            Gets you a list of all the stores.
+            </summary>
+            <returns>A list of stores</returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.StoreController.GetStoreById(System.Int32)">
+            <summary>
+            Gets you a specific store.
+            </summary>
+            <param >The unique identifier of the stores</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.StoreController.CreateStore(FlowerStoreAPI.Dtos.StoreDTOS.StoreCreateDto)">
+            <summary>
+            Creates a new store.
+            </summary>
+            <param >The unique identifier of the store</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.StoreController.UpdateStore(System.Int32,FlowerStoreAPI.Dtos.StoreDTOS.StoreUpdateDto)">
+            <summary>
+            Changes an existing store.
+            </summary>
+            <param >The unique identifier of the store</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.StoreController.DeleteStore(System.Int32)">
+            <summary>
+            Deletes an existing store.
+            </summary>
+            <param >The unique identifier of the store</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

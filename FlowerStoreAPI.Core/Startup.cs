@@ -27,15 +27,13 @@ namespace FlowerStoreAPI
         public void ConfigureServices(IServiceCollection services)
         {   
 
-            services.AddHttpClient<IBasisRegisterService, BasisRegisterService>(
-                // since provider is not used we can discard it (i.e. replace it with an underscore)
-                // (provider, client) =>
+            // services.AddHttpClient<IBasisRegisterService, BasisRegisterService>(
+            //     // (provider, client) =>
 
-                (_, client) =>
-                {
-                    // needless to say, better in config. We pass the api baseuri here.
-                    client.BaseAddress = new Uri("https://api.basisregisters.vlaanderen.be");
-                });
+            //     (_, client) =>
+            //     {
+            //         client.BaseAddress = new Uri("https://api.basisregisters.vlaanderen.be");
+            //     });
 
             //configure connection with MySql database
             services.AddDbContext<FlowerContext>(opt => opt.UseMySql(Configuration.GetConnectionString("SaleCollectionName")));

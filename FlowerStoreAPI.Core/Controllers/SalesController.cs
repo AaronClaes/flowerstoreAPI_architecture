@@ -51,6 +51,10 @@ namespace FlowerStoreAPI.Controllers
         // }
 
         //GET api/sales/{id}
+        /// <summary>
+        /// Gets you a sale by the id you give
+        /// </summary>
+        /// <returns>A single sale</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -67,6 +71,10 @@ namespace FlowerStoreAPI.Controllers
         }
 
         //POST api/sales
+        /// <summary>
+        /// Creates a sale
+        /// </summary>
+        /// <returns>The sale you created</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -92,6 +100,10 @@ namespace FlowerStoreAPI.Controllers
 
 
         //PUT api/sales
+        /// <summary>
+        /// Updates a sale
+        /// </summary>
+        /// <returns>The sale you updated</returns>
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -115,9 +127,9 @@ namespace FlowerStoreAPI.Controllers
 
         //DELETE api/sales/{id}
         /// <summary>
-        /// Deletes an existing store.
+        /// Deletes an existing sale.
         /// </summary>
-        /// <param >The unique identifier of the store</param>
+        /// <param >The unique identifier of the sale</param>
         /// <returns></returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

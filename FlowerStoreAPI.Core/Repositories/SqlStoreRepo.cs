@@ -11,7 +11,6 @@ namespace FlowerStoreAPI.Repositories
     public class SqlStoreRepo : IStoreRepo
     {
         private readonly FlowerContext _context;
-        private int sale = 0;
 
           public SqlStoreRepo(FlowerContext context)
         {
@@ -47,16 +46,6 @@ namespace FlowerStoreAPI.Repositories
         public async Task<Store> GetStoreById(int id)
         {
             return await _context.Stores.FirstOrDefaultAsync(p => p.Id == id);
-        }
-
-        public void RegisterSale(Store store)
-        {
-             if(store == null)
-            {
-                throw new ArgumentNullException(nameof(store));
-            }
-
-            sale++;
         }
 
         //function called to save changes to database

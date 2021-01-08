@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-   <DocumentationFile>E:\Users\projects\Architecture\correct\wetransfer-662252\Flowerstore\FlowerstoreAPI.Core\Flowerstore.xml</DocumentationFile>
+   <DocumentationFile>FlowerstoreAPI.Core\Flowerstore.xml</DocumentationFile>
  </PropertyGroup>
 
 	<PropertyGroup>
@@ -34,13 +34,13 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.6.3" />
   </ItemGroup>
-  <ItemGroup>
+  <!-- <ItemGroup>
     <OpenApiReference Include="docs.json" CodeGenerator="NSwagCSharp" Namespace="BasisRegisters.Vlaanderen">
       <ClassName>BasisRegisterService</ClassName>
       <OutputPath>BasisRegister.cs</OutputPath>
       <Options>/UseBaseUrl:false /GenerateClientInterfaces:true</Options>
     </OpenApiReference>
-  </ItemGroup>
+  </ItemGroup> -->
 
 
 </Project>

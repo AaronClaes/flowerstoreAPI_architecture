@@ -17,7 +17,7 @@ namespace FlowerStoreAPI.Controllers
     {
         private readonly IStoreRepo _repository;
         private readonly IMapper _mapper;
-        private readonly IBasisRegisterService _basisRegisterService;
+        // private readonly IBasisRegisterService _basisRegisterService;
         
         public StoreController(IStoreRepo repository, IMapper mapper)
         {

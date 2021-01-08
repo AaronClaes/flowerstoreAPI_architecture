@@ -49,8 +49,8 @@ namespace FlowerStoreAPI.Test.Integration.Utils.CustomWebApplicationFactory
 
             var db = scopedServices.GetRequiredService<FlowerDatabaseContext>();
             // Clear the database
-            db.Cars.RemoveRange(db.Cars.ToList());
-            db.Garages.RemoveRange(db.Garages.ToList());
+            db.Flowers.RemoveRange(db.Flowers.ToList());
+            db.Stores.RemoveRange(db.Stores.ToList());
             db.SaveChanges();
 
             // execute the method using retrieved database as parameter

@@ -13,6 +13,5 @@ namespace FlowerStoreAPI.Repositories
         void CreateStore(Store store);
         void UpdateStore(Store store);
         void DeleteStore(Store store);
-        void RegisterSale(Store store);
     }
 }

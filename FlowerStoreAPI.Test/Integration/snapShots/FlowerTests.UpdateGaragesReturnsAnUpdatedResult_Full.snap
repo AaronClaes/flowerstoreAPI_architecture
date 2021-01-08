@@ -20,7 +20,7 @@
     "Method": {
       "Method": "GET"
     },
-    "RequestUri": "http://localhost/garages/1",
+    "RequestUri": "http://localhost/flowers/1",
     "Headers": [
       {
         "Key": "Cookie",

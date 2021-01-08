@@ -10,10 +10,7 @@ using Xunit;
 
 namespace FlowerStoreAPI.Tests.Integration.FlowerTests
 {
-    // In this test we test all the methods of the garages controller.
-    // This is both pretty artificial (as the API doesn't know things as "controllers", only endpoints)
-    // and easy for our examples. An alternative is splitting the tests over "retrieval" and "crud" tests,
-    // or even a single test per method.
+    
     public class FlowersTests : IClassFixture<CustomWebApplicationFactory<Startup>>
     {
         private readonly CustomWebApplicationFactory<Startup> _factory;
@@ -23,11 +20,7 @@ namespace FlowerStoreAPI.Tests.Integration.FlowerTests
             _factory = factory;
         }
 
-        // A Task<T> is about the same as an Promise<T>, and we will talk about that in later lessons.
-        // For now it's sufficient to know (but not entirely correct) ...
-        //  - a method is async when you mark it as such (public async ... )
-        //  - a method is async if you have an await in there somewhere
-        //  - an async method always returns Task or Task<T> and needs to be awaited "further up the chain"
+         
         [Fact]
         public async Task GetFlowerEndPointReturnsNoDataWhenDbIsEmpty()
         {

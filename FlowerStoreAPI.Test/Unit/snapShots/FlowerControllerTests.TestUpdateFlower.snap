@@ -1,0 +1,13 @@
+{
+  "Location": null,
+  "Value": {
+    "Id": 1,
+    "Name": "flower",
+    "color": "flower color",
+    "price":4
+  },
+  "Formatters": [],
+  "ContentTypes": [],
+  "DeclaredType": null,
+  "StatusCode": 202
+}

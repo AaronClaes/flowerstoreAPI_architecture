@@ -1,0 +1,12 @@
+{
+  "Value": {
+    Id = 1,
+    Name = "test flower",
+    Color = "test color flower",
+    Price = 5
+  },
+  "Formatters": [],
+  "ContentTypes": [],
+  "DeclaredType": null,
+  "StatusCode": 200
+}

@@ -1,0 +1,20 @@
+{
+  "Value": [
+    {
+      "Id": 1,
+      "Name": "test flower 1"
+    },
+    {
+      "Id": 2,
+      "Name": "test flower 2"
+    },
+    {
+      "Id": 3,
+      "Name": "test flower 3"
+    }
+  ],
+  "Formatters": [],
+  "ContentTypes": [],
+  "DeclaredType": null,
+  "StatusCode": 200
+}

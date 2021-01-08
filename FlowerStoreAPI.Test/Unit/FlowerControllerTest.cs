@@ -1,3 +1,15 @@
+using System;
+using System.Collections.Generic;
+using BasicRestAPI.Controllers;
+using BasicRestAPI.Model;
+using BasicRestAPI.Model.Domain;
+using BasicRestAPI.Model.Web;
+using BasicRestAPI.Repositories;
+using FluentAssertions;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Moq;
+using Snapshooter.Xunit;
 using Xunit;
 
 namespace FlowerStoreAPI.Test.Unit
@@ -9,7 +21,7 @@ namespace FlowerStoreAPI.Test.Unit
         private readonly Mock<ILogger<IFlowerRepo>> _SqlFlowerRepoMock;
         private readonly FlowersController _FlowersController;
 
-        public GarageControllerTests()
+        public FlowersControllerTests()
         {
             // In our tests we choose to ignore whatever logging is being done. We still need to mock it to avoid 
             // null reference exceptions; loose mocks just handle whatever you throw at them.
@@ -78,7 +90,7 @@ namespace FlowerStoreAPI.Test.Unit
                 Name = "test flower",
                 Color = "test color flower",
                 Price = 5
-            }
+            };
             _SqlFlowerRepoMock.Setup(x => x.GetFlowerById(1)).Returns(flower).Verifiable();
             var flowerResponse = _flowersController.GetFlowerById(1);
             flowerResponse.Should().BeOfType<OkObjectResult>();
@@ -114,6 +126,47 @@ namespace FlowerStoreAPI.Test.Unit
                 Price = 4
             });
             flowerResponse.Should().BeOfType<CreatedResult>();
+            Snapshot.Match(flowerResponse);
+        }
+
+        [Fact]
+        public void TestUpdateFlower()
+        {
+            var flower = new Flower()
+            {
+                Id = 1,
+                Name = "flower",
+                Color = "flower color",
+                Price = 4
+            };            
+            _SqlFlowerRepoMock.Setup(x => x.Update("test flower", "test flower color", 4)).Returns(flower).Verifiable();
+            var flowerResponse = _FlowersController.UpdateFlower(1, new FlowerUpsertInput()
+            {
+                Id = 1,
+                Name = "flower",
+                Color = "flower color",
+                Price = 4
+            });
+            flowerResponse.Should().BeOfType<AcceptedResult>();
+            Snapshot.Match(flowerResponse);
+        }
+
+        [Fact]
+        public void TestUpdateFlowerNotFound()
+        {
+   
+            _SqlFlowerRepoMock
+                .Setup(x => x.Update("flower", "flower color", 4))
+                .Throws<NotFoundException>()
+                .Verifiable();
+            var flowerResponse = _FlowersController.UpdateFlower(1, new FlowerUpsertInput()
+            {
+                Id = 1,
+                Name = "flower",
+                Color = "flower color",
+                Price = 4
+            });
+            flowerResponse.Should().BeOfType<NotFoundResult>();
             Snapshot.Match(flowerResponse);
         }
 
